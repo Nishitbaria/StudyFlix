@@ -1,7 +1,5 @@
 /** @format */
 
-import React from "react";
-
 export default function App() {
   return (
     <div className="flex flex-wrap justify-center items-center text-center bg-black h-screen gap-5 ">
