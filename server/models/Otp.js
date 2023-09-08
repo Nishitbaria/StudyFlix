@@ -1,7 +1,7 @@
 /** @format */
 
 const mongoose = require("mongoose");
-const mailsender = require("../utils/utils");
+const mailsender = require("../utils/mailsender");
 
 // Creating the schema
 

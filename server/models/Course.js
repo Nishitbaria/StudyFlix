@@ -41,7 +41,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tags: {
+  tag: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Tag",
   },
