@@ -1,14 +1,14 @@
 /** @format */
 const User = require("../models/User");
 const Course = require("../models/Course");
-const Tag = require("../models/tags");
-const { uploudImageToCloudinary } = require("../utils/imageUploader");
+const Category = require("../models/category"); // Change from Tag to Category
+const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
 exports.createCourse = async (req, res) => {
   try {
-    //featchbng Course data form req.body
+    // Fetching Course data from req.body
 
-    const { courseName, courseDescription, whatYouWillLearn, price, tag } =
+    const { courseName, courseDescription, whatYouWillLearn, price, category } =
       req.body;
 
     const { thumbnail } = req.files.thumbnailImage;
@@ -18,7 +18,7 @@ exports.createCourse = async (req, res) => {
       !courseDescription ||
       !whatYouWillLearn ||
       !price ||
-      !tag ||
+      !category || // Change from tag to category
       !thumbnail
     ) {
       return res
@@ -26,41 +26,40 @@ exports.createCourse = async (req, res) => {
         .json({ success: false, message: "All fields are required" });
     }
 
-    //featching the data of instructor
+    // Fetching the data of instructor
 
-    const userId = req.user.id; ///this is the id of instructor
-    const instructorDetails = await User.findById(req.user.id); ///this is the data of instructor
-    console.log("instructor Deatiles", instructorDetails);
-    //TODO: veriffy that userId and instructorDetails._id are the same  or not
+    const userId = req.user.id; // This is the id of the instructor
+    const instructorDetails = await User.findById(req.user.id); // This is the data of the instructor
+    console.log("Instructor Details", instructorDetails);
 
-    //save Course in database
+    // Save Course in the database
 
     if (!instructorDetails) {
       return res
         .status(400)
-        .json({ success: false, message: "instructor Details not found" });
+        .json({ success: false, message: "Instructor Details not found" });
     }
 
-    //find the tag   using id
+    // Find the category using id
 
-    const tagDetails = await Tag.findById(tag);
+    const categoryDetails = await Category.findById(category); // Change from tag to category
 
-    //validate tag
+    // Validate category
 
-    if (!tagDetails) {
+    if (!categoryDetails) {
       return res
         .status(400)
-        .json({ success: false, message: "Tag Details not found" });
+        .json({ success: false, message: "Category Details not found" });
     }
 
-    //upload image to cloudinary
+    // Upload image to Cloudinary
 
-    const thumbnailImage = await uploudImageToCloudinary(
+    const thumbnailImage = await uploadImageToCloudinary(
       thumbnail,
       process.env.FOLDER_NAME
     );
 
-    //create Course
+    // Create Course
 
     const newCourse = await Course.create({
       courseName,
@@ -68,28 +67,27 @@ exports.createCourse = async (req, res) => {
       instructor: instructorDetails._id,
       whatYouWillLearn,
       price,
-      tag: tagDetails._id,
+      category: categoryDetails._id, // Change from tag to category
       thumbnailImage: thumbnailImage.secure_url,
     });
 
-    //add the course id to instructor   courses array   and save it
+    // Add the course id to the instructor's courses array and save it
 
     await User.findByIdAndUpdate(
-      ///this is the id of instructor
       { _id: userId },
       { $push: { courses: newCourse._id } },
       { new: true }
     );
 
-    //update the tag courses array  and save it
+    // Update the category's courses array and save it
 
-    await Tag.findByIdAndUpdate(
-      { _id: tagDetails._id },
+    await Category.findByIdAndUpdate(
+      { _id: categoryDetails._id }, // Change from tag to category
       { $push: { courses: newCourse._id } },
       { new: true }
     );
 
-    //send response
+    // Send response
 
     return res.status(200).json({
       success: true,
@@ -102,12 +100,12 @@ exports.createCourse = async (req, res) => {
   }
 };
 
-//get all the courses
+// Get all the courses
 
 exports.getAllCourses = async (req, res) => {
   try {
-    //Todo: change the below code for find the incrementally data
-    const allcourses = await Course.find(
+    // Todo: Change the below code to find the incremental data
+    const allCourses = await Course.find(
       {},
       {
         courseName: true,
@@ -120,6 +118,12 @@ exports.getAllCourses = async (req, res) => {
     )
       .populate("instructor")
       .exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "All courses are retrieved successfully",
+      allCourses,
+    });
   } catch (error) {
     console.log(error);
     return res

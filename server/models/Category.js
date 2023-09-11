@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 
 // Creating the schema
 
-const tagsSchema = new mongoose.Schema({
-  name: {
+const categorySchema = new mongoose.Schema({
+  category: {
     type: String,
     required: true,
   },
@@ -21,4 +21,4 @@ const tagsSchema = new mongoose.Schema({
 
 // Export the model
 
-module.exports = mongoose.model("Tags", tagsSchema);
+module.exports = mongoose.model("Category", categorySchema);
