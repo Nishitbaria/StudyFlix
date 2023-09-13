@@ -21,9 +21,18 @@ const mailsender = async (email, title, body) => {
       html: body,
     });
 
-    console.log("Email sent successfully:", info.response);
+    console.log("Email sent successfully:");
+
+    return res.status(200).json({
+      success: true,
+      message: "Email sent successfully",
+    });
   } catch (error) {
     console.error("Email send error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
   }
 };
 
