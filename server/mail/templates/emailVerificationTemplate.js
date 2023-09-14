@@ -68,19 +68,19 @@ const otpTemplate = (otp) => {
 	
 	<body>
 		<div class="container">
-			<a href="https://StudyFlix-edtech-project.vercel.app"><img class="logo"
-					src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyFlix Logo"></a>
+			<a href="https://Studyflix-edtech-project.vercel.app"><img class="logo"
+					src="../../../images/Studyflix.png" alt="Studyflix Logo"></a>
 			<div class="message">OTP Verification Email</div>
 			<div class="body">
 				<p>Dear User,</p>
-				<p>Thank you for registering with StudyFlix. To complete your registration, please use the following OTP
+				<p>Thank you for registering with Studyflix. To complete your registration, please use the following OTP
 					(One-Time Password) to verify your account:</p>
 				<h2 class="highlight">${otp}</h2>
 				<p>This OTP is valid for 5 minutes. If you did not request this verification, please disregard this email.
 				Once your account is verified, you will have access to our platform and its features.</p>
 			</div>
 			<div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-					href="mailto:info@StudyFlix.com">info@StudyFlix.com</a>. We are here to help!</div>
+					href="mailto:info@Studyflix.com">info@Studyflix.com</a>. We are here to help!</div>
 		</div>
 	</body>
 	
