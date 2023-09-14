@@ -1,61 +1,78 @@
-/** @format */
-//import the library
+// Import the Mongoose library
 const mongoose = require("mongoose");
 
-//creting the schema
+// Define the user schema using the Mongoose Schema constructor
+const userSchema = new mongoose.Schema(
+	{
+		// Define the name field with type String, required, and trimmed
+		firstName: {
+			type: String,
+			required: true,
+			trim: true,
+		},
+		lastName: {
+			type: String,
+			required: true,
+			trim: true,
+		},
+		// Define the email field with type String, required, and trimmed
+		email: {
+			type: String,
+			required: true,
+			trim: true,
+		},
 
-const userSchema = new mongoose.Schema({
-  name: {
-    //name of the user
-    type: String,
-    required: true,
-    trim: true,
-  },
-  email: {
-    //    email of the user
-    type: String,
-    required: true,
-    trim: true,
-  },
-  password: {
-    //password of the user
-    type: String,
-    required: true,
-  },
-  accountTypes: {
-    //account type of the user
-    type: String,
-    required: true,
-    enum: ["Admin", "Student", "Instructor"], //enum is used to restrict the values of the field
-  },
-  additionalDetails: {
-    //additional details of the user
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
-  },
-  course: {
-    //course of the user
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Course",
-  },
-  image: {
-    //image of the user
-    type: String,
-    required: true,
-  },
-  courseProgress: {
-    //course progress of the user
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "CourseProgress",
-  },
-  token: {
-    type: String,
-  },
-  resetPasswordExpires: {
-    type: Date,
-  },
-});
+		// Define the password field with type String and required
+		password: {
+			type: String,
+			required: true,
+		},
+		// Define the role field with type String and enum values of "Admin", "Student", or "Visitor"
+		accountType: {
+			type: String,
+			enum: ["Admin", "Student", "Instructor"],
+			required: true,
+		},
+		active: {
+			type: Boolean,
+			default: true,
+		},
+		approved: {
+			type: Boolean,
+			default: true,
+		},
+		additionalDetails: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: "Profile",
+		},
+		courses: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Course",
+			},
+		],
+		token: {
+			type: String,
+		},
+		resetPasswordExpires: {
+			type: Date,
+		},
+		image: {
+			type: String,
+			required: true,
+		},
+		courseProgress: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "courseProgress",
+			},
+		],
 
-//export the model
+		// Add timestamps for when the document is created and last modified
+	},
+	{ timestamps: true }
+);
 
-module.exports = mongoose.model("User", userSchema);
+// Export the Mongoose model for the user schema, using the name "user"
+module.exports = mongoose.model("user", userSchema);

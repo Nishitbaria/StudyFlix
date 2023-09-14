@@ -2,11 +2,9 @@
 
 const nodemailer = require("nodemailer");
 
-const mailsender = async (email, title, body) => {
+const mailSender = async (email, title, body) => {
   try {
-    // Validate input parameters (add your validation logic here)
-
-    const transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       auth: {
         user: process.env.MAIL_USER,
@@ -14,26 +12,17 @@ const mailsender = async (email, title, body) => {
       },
     });
 
-    const info = await transporter.sendMail({
-      from: "Study | Flix",
-      to: email,
-      subject: title,
-      html: body,
+    let info = await transporter.sendMail({
+      from: "StudyFlix || CodeHelp - by Babbar",
+      to: `${email}`,
+      subject: `${title}`,
+      html: `${body}`,
     });
-
-    console.log("Email sent successfully:");
-
-    return res.status(200).json({
-      success: true,
-      message: "Email sent successfully",
-    });
+    console.log(info);
+    return info;
   } catch (error) {
-    console.error("Email send error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Something went wrong",
-    });
+    console.log(error.message);
   }
 };
 
-module.exports = mailsender;
+module.exports = mailSender;
