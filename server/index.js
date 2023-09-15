@@ -14,6 +14,7 @@ const cors = require("cors");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
+const Profile = require("./models/Profile");
 
 // Setting up port number
 const PORT = process.env.PORT || 4000;
@@ -45,10 +46,10 @@ cloudinaryConnect();
 
 // Setting up routes
 app.use("/api/v1/auth", userRoutes);
-app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
+app.use("/api/v1/user", profileRoutes);
 
 // Testing the server
 app.get("/", (req, res) => {
