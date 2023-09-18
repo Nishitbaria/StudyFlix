@@ -4,7 +4,7 @@ import React from "react";
 import CTAButton from "../../../components/core/HomePage/Button";
 import { FaArrowRight } from "react-icons/fa";
 import Instructor from "../../../assets/Images/Instructor.png";
-import HighlightText from "./HighlightText";
+import HighLightText from "./HighLightText";
 
 const InstructorSection = () => {
   return (
@@ -20,7 +20,7 @@ const InstructorSection = () => {
         <div className="lg:w-[50%] flex gap-10 flex-col">
           <h1 className="lg:w-[50%] text-4xl font-semibold ">
             Become an
-            <HighlightText text={"instructor"} />
+            <HighLightText text={"instructor"} />
           </h1>
 
           <p className="font-medium text-[16px] text-justify w-[90%] text-richblack-300">
