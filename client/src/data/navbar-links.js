@@ -1,3 +1,5 @@
+/** @format */
+
 export const NavbarLinks = [
   {
     title: "Home",
