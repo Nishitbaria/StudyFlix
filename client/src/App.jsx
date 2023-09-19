@@ -8,6 +8,7 @@ import OpenRoute from "./components/core/Auth/OpenRoute";
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             </OpenRoute>
           }
         />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </div>
   );
