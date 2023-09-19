@@ -5,10 +5,10 @@ import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, matchPath, useLocation } from "react-router-dom";
-import { apiConnector } from "../../services/apiConnector";
+import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
-import { NavbarLinks } from "../../data/NavbarLinks";
+import { NavbarLinks } from "../../data/navbar-links";
 
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
 
