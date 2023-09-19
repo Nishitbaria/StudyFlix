@@ -1,19 +1,39 @@
 /** @format */
 
-import React from "react";
+import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Test from "./Test.jsx";
-import Navbar from "./components/Common/Navbar.jsx";
+import Home from "./pages/Home";
+import Navbar from "./components/common/Navbar";
+import OpenRoute from "./components/core/Auth/OpenRoute";
 
-export default function App() {
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
+function App() {
   return (
-    <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
+    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Testing" element={<Test />} />
+        <Route
+          path="signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          }
+        />
       </Routes>
     </div>
   );
 }
+
+export default App;
