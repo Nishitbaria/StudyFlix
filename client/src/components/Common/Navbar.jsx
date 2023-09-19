@@ -8,7 +8,7 @@ import { Link, matchPath, useLocation } from "react-router-dom";
 import { apiConnector } from "../../services/apiConnector";
 import { categories } from "../../services/apis";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
-import { NavbarLinks } from "../../data/navbar-links";
+import { NavbarLinks } from "../../data/NavbarLinks";
 
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
 
