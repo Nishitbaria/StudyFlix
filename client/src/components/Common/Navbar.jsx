@@ -11,7 +11,7 @@ import { categories } from "../../Servicess/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import ProfileDropdown from "./ProfileDropdown.jsx";
 
-function Navbar() {
+export default function Navbar() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
   const { totalItems } = useSelector((state) => state.cart);
@@ -148,4 +148,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+
