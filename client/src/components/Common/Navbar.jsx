@@ -9,7 +9,7 @@ import { NavbarLinks } from "../../data/navbar-links";
 import { apiConnector } from "../../Servicess/apiConnector";
 import { categories } from "../../Servicess/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
-import ProfileDropdown from "../core/Auth/ProfileDropdown.jsx";
+import ProfileDropdown from "./ProfileDropdown.jsx";
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth);
