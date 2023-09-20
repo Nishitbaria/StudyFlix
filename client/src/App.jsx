@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import UpdatePassword from "./pages/UpdatePassword";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -57,8 +58,18 @@ function App() {
               <UpdatePassword />
             </OpenRoute>
           }
+     
         />
+     
+        <Route
+        path="About"
+        element={
+       <About />
+        }
+      />
+  
       </Routes>
+      
     </div>
   );
 }
