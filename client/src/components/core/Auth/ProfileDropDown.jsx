@@ -2,10 +2,10 @@
 
 import React from "react";
 
-export default function ProfileDropDown() {
+export default function ProfileDropdown() {
   return (
     <div>
-      <h1>ProfileDropDown</h1>
+      <h1>ProfileDropdown</h1>
     </div>
   );
 }
