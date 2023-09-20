@@ -1,35 +1,15 @@
-/** @format */
-
 import { useEffect, useState } from "react";
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, matchPath, useLocation } from "react-router-dom";
-import { apiConnector } from "../../services/apiConnector";
-import { categories } from "../../services/apis";
+
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
-
+import { apiConnector } from "../../services/apiConnector";
+import { categories } from "../../services/apis";
+import { ACCOUNT_TYPE } from "../../utils/constants";
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
-
-// const subLinks = [
-//   {
-//     title: "Python",
-//     link: "/catalog/python",
-//   },
-//   {
-//     title: "javascript",
-//     link: "/catalog/javascript",
-//   },
-//   {
-//     title: "web-development",
-//     link: "/catalog/web-development",
-//   },
-//   {
-//     title: "Android Development",
-//     link: "/catalog/Android Development",
-//   },
-// ];
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth);
@@ -44,10 +24,7 @@ function Navbar() {
     (async () => {
       setLoading(true);
       try {
-        const res = await apiConnector(
-          "GET",
-          import.meta.env.VITE_REACT_APP_BASE_URL + "/course/showALLCategories"
-        );
+        const res = await apiConnector("GET", categories.CATEGORIES_API);
         setSubLinks(res.data.data);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
@@ -55,8 +32,6 @@ function Navbar() {
       setLoading(false);
     })();
   }, []);
-
-  // console.log("sub links", subLinks)
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
@@ -71,7 +46,13 @@ function Navbar() {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <img
+            src={logo}
+            alt="Logo"
+            width={160}
+            height={32}
+            loading="lazy"
+          />
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
@@ -93,25 +74,21 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
-                        ) : subLinks.length ? (
-                          <>
-                            {subLinks
-                              ?.filter(
-                                (subLink) => subLink?.courses?.length > 0
-                              )
-                              ?.map((subLink, i) => (
-                                <Link
-                                  to={`/catalog/${subLink.name
-                                    .split(" ")
-                                    .join("-")
-                                    .toLowerCase()}`}
-                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
-                                  key={i}
-                                >
-                                  <p>{subLink.name}</p>
-                                </Link>
-                              ))}
-                          </>
+                        ) : subLinks?.length > 0 ? (
+                          subLinks
+                            .filter((subLink) => subLink?.courses?.length > 0)
+                            .map((subLink, i) => (
+                              <Link
+                                to={`/catalog/${(subLink?.name || "")
+                                  .split(" ")
+                                  .join("-")
+                                  .toLowerCase()}`}
+                                className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                key={i}
+                              >
+                                <p>{subLink?.name || ""}</p>
+                              </Link>
+                            ))
                         ) : (
                           <p className="text-center">No Courses Found</p>
                         )}
