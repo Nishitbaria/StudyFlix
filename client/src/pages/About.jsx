@@ -3,7 +3,7 @@ import FoundingStory from "../assets/Images/FoundingStory.png";
 import BannerImage1 from "../assets/Images/aboutus1.webp";
 import BannerImage2 from "../assets/Images/aboutus2.webp";
 import BannerImage3 from "../assets/Images/aboutus3.webp";
-import Footer from "../components/Common/Footer";
+import Footer from "../components/common/Footer";
 import Quote from "../components/core/About/Quote";
 import Stats from "../components/core/About/Stats";
 

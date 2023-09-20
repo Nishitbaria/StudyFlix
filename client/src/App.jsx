@@ -3,7 +3,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/Common/Navbar";
+import Navbar from "./components/common/Navbar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
 
 import Login from "./pages/Login";
