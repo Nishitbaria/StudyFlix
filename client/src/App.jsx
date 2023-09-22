@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import UpdatePassword from "./pages/UpdatePassword";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -66,7 +67,10 @@ function App() {
        <About />
         }
       />
+      <Route path="/contact" element={<Contact />} />
   
+
+      <Route path="*" element={<Error />} />
       </Routes>
       
     </div>
