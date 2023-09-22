@@ -17,7 +17,7 @@ export default function SidebarLink({link,iconName}) {
       }
   
     return (
-    <div>
+  
      <NavLink
      to={link.path}
      className={`relative px-8 py-2 text-sm font-medium ${
@@ -37,6 +37,6 @@ export default function SidebarLink({link,iconName}) {
       <span>{link.name}</span>
     </div>
      </NavLink>
-    </div>
+   
   )
 }
