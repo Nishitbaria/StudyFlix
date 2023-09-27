@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
+const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 // AUTH ENDPOINTS
 export const endpoints = {
@@ -13,7 +13,6 @@ export const endpoints = {
 export const profileEndpoints = {
   GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
-  GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
 }
 
 // STUDENTS ENDPOINTS

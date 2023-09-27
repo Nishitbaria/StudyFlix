@@ -1,12 +1,12 @@
 import React from "react";
-import HighlightText from "../../../components/core/HomePage/HighLightText";
+import HighlightText from "../../../components/core/HomePage/HighlightText";
 import CTAButton from "../../../components/core/HomePage/Button";
 
 const LearningGridArray = [
   {
     order: -1,
     heading: "World-Class Learning for",
-    highliteText: "Anyone, Anywhere",
+    highlightText: "Anyone, Anywhere",
     description:
       "Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
     BtnText: "Learn More",
@@ -63,7 +63,7 @@ const LearningGrid = () => {
               <div className="xl:w-[90%] flex flex-col gap-3 pb-10 xl:pb-0">
                 <div className="text-4xl font-semibold ">
                   {card.heading}
-                  <HighlightText text={card.highliteText} />
+                  <HighlightText text={card.highlightText} />
                 </div>
                 <p className="text-richblack-300 font-medium">
                   {card.description}
