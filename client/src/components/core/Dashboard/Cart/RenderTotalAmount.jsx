@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
 import IconBtn from "../../../common/IconBtn"
+
 
 export default function RenderTotalAmount() {
   const { total, cart } = useSelector((state) => state.cart)
