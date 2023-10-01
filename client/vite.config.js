@@ -10,6 +10,9 @@ dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  define: {
+        global: {},
+  },
   build: {
     rollupOptions: {
       external: ["video-react/dist/video-react.css"],
