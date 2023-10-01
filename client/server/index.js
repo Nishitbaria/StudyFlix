@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin: "*",
+		origin: ["https://stellular-alpaca-01bdf7.netlify.app/"],
 		credentials: true,
 	})
 );
