@@ -1,9 +1,9 @@
 import { toast } from "react-hot-toast"
 
-import rzpLogo from "../../assets//Logo/Logo-Full-Dark.png"
+import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { resetCart } from "../../slices/cartSlice"
 import { setPaymentLoading } from "../../slices/courseSlice"
-import { apiConnector } from "../apiconnector"
+import { apiConnector } from "../apiConnector"
 import { studentEndpoints } from "../apis"
 
 const {
@@ -65,10 +65,8 @@ export async function BuyCourse(
     console.log("PAYMENT RESPONSE FROM BACKEND............", orderResponse.data)
 
     // Opening the Razorpay SDK
-
-  
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY,
+      key: process.env.RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,

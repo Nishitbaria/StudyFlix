@@ -1,8 +1,4 @@
-/**
- * @format
- * @type {import('tailwindcss').Config}
- */
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -14,7 +10,6 @@ module.exports = {
     colors: {
       white: "#fff",
       black: "#000",
-      red: "#FF0000",
       transparent: "#ffffff00",
       richblack: {
         5: "#F1F2FF",
@@ -132,7 +127,7 @@ module.exports = {
     extend: {
       maxWidth: {
         maxContent: "1260px",
-        maxContentTab: "650px",
+        maxContentTab: "650px"
       },
     },
   },
