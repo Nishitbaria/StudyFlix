@@ -15,7 +15,6 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ["video-react/dist/video-react.css"],
       external: ["react-dropzone"],
     },
   },
