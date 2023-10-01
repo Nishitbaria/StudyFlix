@@ -4,7 +4,7 @@ import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 // Images
-import Logo from "../../assets/Logo/Logo-Full-Light.png"
+import logo from "../../assets/Logo/logo-dark.png"
 import { FooterLink2 } from "../../data/footer-links"
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"]
@@ -29,7 +29,7 @@ const Footer = () => {
           {/* Section 1 */}
           <div className="flex flex-row flex-wrap justify-between gap-3 pl-3 lg:w-[50%] lg:border-r lg:border-richblack-700 lg:pr-5">
             <div className="mb-7 flex w-[30%] flex-col gap-3 lg:w-[30%] lg:pl-0">
-              <img src={Logo} alt="" className="object-contain" />
+              <img src={logo} alt="" className="object-contain" />
               <h1 className="text-[16px] font-semibold text-richblack-50">
                 Company
               </h1>
