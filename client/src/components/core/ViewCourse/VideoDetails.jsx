@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 
-import '~video-react/dist/video-react.css'; 
+import 'video-react/dist/video-react.css'; 
 import { useLocation } from "react-router-dom"
 import { BigPlayButton, Player } from "video-react"
 
